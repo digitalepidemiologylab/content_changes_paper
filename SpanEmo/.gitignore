@@ -1,0 +1,12 @@
+# Data
+data/*.txt
+data/*.py
+data/prepared*
+data/processed_tweets_*
+data/all_processed_tweets
+# Configs
+configs/*.json
+# Model checkpoints
+models/*.pt
+# Cache
+scripts/__pycache__/
