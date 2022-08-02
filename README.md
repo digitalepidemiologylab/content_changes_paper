@@ -6,17 +6,18 @@ The so-called test-positive tweets are stored under `data/positive` in daily Par
 The Twitter timelines of the selected users are then retrieved with `download_timelines.py` and stored (Pickle files in `data/timelines/raw`). 
 The script [`parse_timelines.py`](https://github.com/digitalepidemiologylab/content_changes_paper/blob/main/parse_timelines.py) is then used to parse the raw timelines (in JSON Line files) and store the output data in Parquet files.
 The following analyses are applied to the parsed timelines:
-- Tagging of tweets containing symptoms ([`timeline_medcat.py`](https://github.com/digitalepidemiologylab/content_changes_paper/blob/main/timeline_medcat.py)). Tweets are tagged with MedCAT (the comparison of this method with the lexicon-based approach developed by [Sarker et al.](https://doi.org/10.1093/jamia/ocaa116) is carried out with [`sampling_for_comparison.py`](https://github.com/digitalepidemiologylab/content_changes_paper/blob/main/sampling_for_comparison.py))
-- Temporal assessment of the self-reports of symptoms ([`time_extract.py`](https://github.com/digitalepidemiologylab/content_changes_paper/blob/main/time_extract.py))
+- Tagging of tweets containing symptoms ([`timeline_medcat.py`](https://github.com/digitalepidemiologylab/content_changes_paper/blob/main/timeline_medcat.py)). Tweets are tagged with MedCAT. We used [`sampling_for_comparison.py`](https://github.com/digitalepidemiologylab/content_changes_paper/blob/main/sampling_for_comparison.py)
+ to sample 100 tweets for the comparison of MedCAT with the lexicon-based approach developed by [Sarker et al.](https://doi.org/10.1093/jamia/ocaa116)
+- Temporal assessment of the self-reports of symptoms through Named Entity Recognition with SUTime ([`time_extract.py`](https://github.com/digitalepidemiologylab/content_changes_paper/blob/main/time_extract.py))
 - Filtering self-reports of symptoms (*cf.* [`reporting_classification` folder](https://github.com/digitalepidemiologylab/content_changes_paper/tree/main/reporting_classification))
 - Domain analysis of shared URLs ([`timeline_url.py`](https://github.com/digitalepidemiologylab/content_changes_paper/blob/main/timeline_url.py))
 - Multi-label classification of the tweets into different general topics (*cf.* [`topic_classification` folder](https://github.com/digitalepidemiologylab/content_changes_paper/tree/main/topic_classification))
 - Multi-label classification of tweets according to the expressed emotions (*cf.* `SpanEmo` folder)
 
-The results of these various analyses are collected and concatenated with [`timeline_combine_all.py`](https://github.com/digitalepidemiologylab/content_changes_paper/blob/main/timeline_combine_all.py), which enables to generate a user-specific files in `data/language/all_timelines`.
+The results of these various analyses are collected and concatenated with [`timeline_combine_all.py`](https://github.com/digitalepidemiologylab/content_changes_paper/blob/main/timeline_combine_all.py), which enables to generate user-specific files in `data/language/all_timelines`.
 
 ## Pre/post comparisons
-Files in `data/language/all_timelines` contain the information required for the individual-level pre/post comparisons (*cf.* [`statistical_analysis.py`](https://github.com/digitalepidemiologylab/content_changes_paper/blob/main/time_extract.py)) after the tweets of the selected users were processed with the various ML-based methods described above.
+After the tweets of the selected users are processed with the various ML-based methods described above, the outputs will be found in `data/language/all_timelines`. Based on this data, [`statistical_analysis.py`](https://github.com/digitalepidemiologylab/content_changes_paper/blob/main/time_extract.py) can perform the individual-level pre/post comparisons.
 The collective analyses consist of Wilcoxon signed-rank tests, as detailed in [`wilcoxon_features.R`](https://github.com/digitalepidemiologylab/content_changes_paper/blob/main/wilcoxon_features.R) and [`adjusted_pvalues.py`](https://github.com/digitalepidemiologylab/content_changes_paper/blob/main/adjusted_pvalues.py).
 
 ## Figures
