@@ -1,4 +1,4 @@
-# Statistical analyses to assess changes between the pre-period and the post-period
+# Results of the statistical analyses to assess changes between the pre-period and the post-period
 Add the following three CSV files:
 - `preprocessed_data.csv`
 - `run/individual_tests/tweets_selected_users_pre_post_periods.csv`
