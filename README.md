@@ -17,8 +17,11 @@ The following analyses are applied to the parsed timelines:
 The results of these various analyses are collected and concatenated with [`timeline_combine_all.py`](https://github.com/digitalepidemiologylab/content_changes_paper/blob/main/timeline_combine_all.py), which enables to generate user-specific files in `data/language/all_timelines`.
 
 ## Pre/post comparisons
-After the tweets of the selected users are processed with the various ML-based methods described above, the outputs will be found in `data/language/all_timelines`. Based on this data, [`statistical_analysis.py`](https://github.com/digitalepidemiologylab/content_changes_paper/blob/main/time_extract.py) can perform the individual-level pre/post comparisons.
+After the tweets of the users who reported that they tested positive to Covid-19 are processed with the various ML-based methods described above, the output files are stored in `data/language/all_timelines`. Individual-level pre/post comparisons related to these data are then performed with [`statistical_analysis.py`](https://github.com/digitalepidemiologylab/content_changes_paper/blob/main/time_extract.py).
 The collective analyses consist of Wilcoxon signed-rank tests, as detailed in [`wilcoxon_features.R`](https://github.com/digitalepidemiologylab/content_changes_paper/blob/main/wilcoxon_features.R) and [`adjusted_pvalues.py`](https://github.com/digitalepidemiologylab/content_changes_paper/blob/main/adjusted_pvalues.py).
+
+It should be noted that the collective analyses should be performed *after* executing `statistical_analysis.py` since the latter script contains a few preprocessing steps required for filtering the users retained in the pre/post comparisons. More information about the output of `statistical_analysis.py` is provided [here](https://github.com/digitalepidemiologylab/content_changes_paper/tree/main/results_statistical_analysis).
+
 
 ## Figures
 The figures shown in the article can be generated as follows:
@@ -28,4 +31,3 @@ The figures shown in the article can be generated as follows:
 - Supplementary Figure 1: [`generate_causal_impact_figure.py`](https://github.com/digitalepidemiologylab/content_changes_paper/blob/main/generate_causal_impact_figure.py)
 - Supplementary Figure 2: [`analysis_positive_tweets.py`](https://github.com/digitalepidemiologylab/content_changes_paper/blob/main/analysis_positive_tweets.py)
 - Supplementary Figure 3: [`timeline_symptoms.py`](https://github.com/digitalepidemiologylab/content_changes_paper/blob/main/timeline_symptoms.py)
-
