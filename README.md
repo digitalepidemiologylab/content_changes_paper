@@ -1,4 +1,4 @@
-# Dynamics of social media behavior before and after COVID-19 infection
+# Dynamics of social media behavior before and after SARS-CoV-2 infection
 
 ## Methods 
 The first task is to identify Twitter users who reported that they tested positive to Covid-19. This step is achieved with [`positive_filter.py`](https://github.com/digitalepidemiologylab/content_changes_paper/blob/main/positive_filter.py)(which depends on [`filters.py`](https://github.com/digitalepidemiologylab/content_changes_paper/blob/main/filters.py)).
